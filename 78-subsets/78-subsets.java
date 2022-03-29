@@ -8,7 +8,7 @@ class Solution {
             return;
         }
         try {
-
+            
             int t = n1.get(i);
             n2.add(t);
             powerset(n1, i + 1, n2);
