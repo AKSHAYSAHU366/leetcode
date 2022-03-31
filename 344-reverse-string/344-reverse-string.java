@@ -1,14 +1,20 @@
 class Solution {
-    public void reverseString(char[] s) {
-        int j = s.length-1;
-        for(int i=0; i<s.length/2 ; i++){
-            char a = s[i];
-            char b = s[j];
-            s[i] = b;
-            s[j] = a;
-             j--;
-
+    void printstr( char []s, int l,int r)
+    {
+        if(l<=r)
+        {
+           // System.out.println(s[l]);
+            return;
         }
+        char a= s[r];
+         s[r]= s[l];
+          s[l]=a;
+        printstr(s,l-1,r+1);
+       // System.out.println(s[l]);
         
+        
+    }
+    public void reverseString(char[] s) {
+        printstr(s,s.length-1,0);
     }
 }
