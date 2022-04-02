@@ -22,11 +22,6 @@ class Solution {
             {
             cur=cur+nums[i];
             per = cur;
-           
-            if(cur>per)
-            {
-                per=cur;
-            }
              j++;
             }
         }
