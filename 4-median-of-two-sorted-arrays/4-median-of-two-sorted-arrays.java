@@ -3,8 +3,20 @@ class Solution {
      int l= nums1.length+nums2.length;
         int ans[]=new int[l];
         int x,j1=0,j2=0;
+        if(l%2==0)
+        {
+            x=l/2;
+        }
+        else
+        {
+            x=l-1/2;
+        }
          for(int i=0;i<l;i++)
          {
+             if(i>x)
+             {
+                 break;
+             }
              if(j1==nums1.length)
              {
                ans[i]=nums2[j2];
