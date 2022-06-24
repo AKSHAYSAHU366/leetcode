@@ -1,16 +1,37 @@
 class Solution {
-    public int mySqrt(int x) {
-        long i;
-        if(x==1)
-            return 1;
-        for(i=0;i<=x/2;i++)
+    long bin(long l,long h,long k)
+    {
+         if(l==h)
+         {
+                 if(l*l<=k)
+                     return l;
+                else
+                    return l-1;
+         }
+        long mid=(l+h)/2;
+        if(mid==l)
         {
-            if(i*i>x)
-            {
-               break;
-               // return i-1;
+            if(mid*mid<=k)
+            {   if(h*h<=k)
+                return h;
+                else
+                 return mid;
             }
+            
+            return mid-1;
         }
-        return (int)i-1;
+        if(mid*mid==k)
+        {
+            return mid;
+        }
+        else if(mid*mid<k)
+        {
+            return bin(mid+1,h,k);
+        }
+        return bin(l,mid-1,k);
+    }
+    public int mySqrt(int x) {
+      long l=1,h=x;
+        return (int)bin(l,h,x);
     }
 }
