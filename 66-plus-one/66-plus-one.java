@@ -1,56 +1,57 @@
 class Solution {
-    public int[] plusOne(int[] digit) {
-      //int[] digit = {9,9};
-        int last = digit.length - 1;
-        int count = 0;
-        for (int i = last; i >= 0; i--) {
-            if (digit[i] == 9) {
-                count++;
-            } else {
+    public int[] plusOne(int[] digits) {
+        int l=digits.length;
+        if(digits[l-1]<9)     
+        {
+           digits[l-1]++; 
+            return digits;
+        }
+        boolean b=true;
+       // int t=-1;
+        for(int i:digits)
+        {
+            if(i<9)
+            {
+                b=false;
+               // t++;
                 break;
             }
         }
-       // System.out.println("coutn-"+count);
-        if (count == digit.length) {
-         
-            int temp = count;
-            int n[] = new int[last + 2];
-            for (int j = last + 1; j >= 0; j--) {
-                if (temp > 0) {
-                    n[j] = 0;
-                } else if (temp == 0) {
-                    n[j] = 1;
-                } else {
-                    n[j] = digit[j];
-                }
-                temp--;
-
-            }
-           
-             return n;
-        } else if (count < digit.length) {
-        //    System.out.println("tjis run");
-            int temp = count;
-          //  int n[] = new int[last + 1];
-            for (int j = last; j >= 0; j--) {
-                    if(temp>0)
-                    {
-                        digit[j]=0;
-                    }
-                    else
-                    {
-                        digit[j]++;
-                        break;
-                    }
-               temp--;
-            }
-           
-            return digit;
-        } else {
-            // System.out.println(digit[last]);
-            digit[last] = digit[last] + 1;
-           return digit;
+        if(b)
+        {
+            int al[]=new int[l+1];
+             for(int i=0;i<=l;i++)
+             {
+                 if(i>0)
+                 {
+                     al[i]=0;
+                     
+                 }
+                 else
+                 {
+                     al[i]=1;
+                 }
+                 
+             }
+            return al;
         }
+        int c=0;
+        for(int i=l-1;i>=0;i--)
+        {
+           if(digits[i]==9)
+           {
+               digits[i]=0;
+               c=1;
+               
+           }
+            else
+            {
+                digits[i]+=c;
+                break;
+            }
+        }
+        return digits;
+        
         
     }
 }
